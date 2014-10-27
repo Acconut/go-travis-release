@@ -39,8 +39,15 @@ function upload {
     local name=$1
     local content_type=$2
 
-    curl -iL "http://gobuild3.qiniudn.com/github.com/${TRAVIS_REPO_SLUG}/tag-v-${version}/${repo}-${name}" | \
-curl \
+    code=0
+    while [ $code -ne "200" ]
+    doqgit 
+        code=$(curl -s -o /dev/null -w "%{http_code}" -OL "http://gobuild3.qiniudn.com/github.com/${TRAVIS_REPO_SLUG}/tag-v-${version}/${repo}-${name}")
+        echo "Requested ${repo}-${name}... ${code}"
+        sleep 1
+    done
+    cat "${repo}-${name}" | \
+    curl \
     -X POST \
     -u "${OAUTH_TOKEN}:x-oauth-basic" \
     -H "Content-Type: ${content_type}" \
