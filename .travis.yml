@@ -1,0 +1,5 @@
+language: go
+after_success: "./travis-release.sh"
+env:
+  global:
+    secure: JZvXIB+YF/+Sh81rE6S2gO+s5oJMMnadCYbTuB34rTeh+7oQaodttaooHYSoFeUCy1Fe9S5VmQHdlcChD7AZ+BtXXHLBfZFWGO8U5DN3SrdiGJL4Xu+KaXYleYKzkbPSC3jQcffINGjKXmk7o7A0gusmU/a+iw7eQ8VQPlnsQ8k=
