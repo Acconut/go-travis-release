@@ -56,6 +56,10 @@ function upload {
     
 }
 
+# Start build
+escaped_repo=$(echo $TRAVIS_REPO_SLUG | tr "/" "%2F2)
+curl -i "http://gobuild.io/task/build?tag=tag%3A${version}&reponame=github.com%2F${escaped_repo}"
+
 # Upload builds from gobuild.io
 upload "windows-386.zip" "application/zip"
 upload "windows-amd64.zip" "application/zip"
