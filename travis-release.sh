@@ -41,18 +41,18 @@ function upload {
 
     code=0
     while [ $code -ne "200" ]
-    doqgit 
+    do
         code=$(curl -s -o /dev/null -w "%{http_code}" -OL "http://gobuild3.qiniudn.com/github.com/${TRAVIS_REPO_SLUG}/tag-v-${version}/${repo}-${name}")
         echo "Requested ${repo}-${name}... ${code}"
         sleep 1
     done
-    cat "${repo}-${name}" | \
+
     curl \
     -X POST \
     -u "${OAUTH_TOKEN}:x-oauth-basic" \
     -H "Content-Type: ${content_type}" \
     "https://uploads.github.com/repos/${TRAVIS_REPO_SLUG}/releases/${release_id}/assets?name=${name}" \
-    -d @-
+    -d "@${repo}-${name}"
     
 }
 
