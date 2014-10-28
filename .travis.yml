@@ -1,5 +1,34 @@
 language: go
-after_success: "./travis-release.sh"
-env:
-  global:
+
+go:
+  - release
+
+env: "PATH=/home/travis/gopath/bin:$PATH"
+
+before_install:
+
+install:
+  - go get github.com/laher/goxc
+
+script:
+  - goxc -d . -bc="darwin,windows,linux"
+
+deploy:
+  provider: releases
+  api_key:
     secure: JZvXIB+YF/+Sh81rE6S2gO+s5oJMMnadCYbTuB34rTeh+7oQaodttaooHYSoFeUCy1Fe9S5VmQHdlcChD7AZ+BtXXHLBfZFWGO8U5DN3SrdiGJL4Xu+KaXYleYKzkbPSC3jQcffINGjKXmk7o7A0gusmU/a+iw7eQ8VQPlnsQ8k=
+  file:
+    - snapshot/pretty_windows_386.zip
+    - snapshot/pretty_windows_amd64.zip
+    - snapshot/pretty_darwin_386.zip
+    - snapshot/pretty_darwin_amd64.zip
+    - snapshot/pretty_linux_386.tar.gz
+    - snapshot/pretty_linux_amd64.tar.gz
+    - snapshot/pretty_linux_arm.tar.gz
+    - snapshot/pretty_snapshot_amd64.deb
+    - snapshot/pretty_snapshot_armhf.deb
+    - snapshot/pretty_snapshot_i386.deb
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
