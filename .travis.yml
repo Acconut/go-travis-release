@@ -1,22 +1,15 @@
 language: go
-
 go:
-  - release
-
-env: "PATH=/home/travis/gopath/bin:$PATH"
-
-before_install:
-
+- release
+env: PATH=/home/travis/gopath/bin:$PATH
 install:
-  - go get github.com/laher/goxc
-
+- go get github.com/laher/goxc
 script:
-  - goxc -d . -bc="darwin,windows,linux"
-
+- goxc -d . -bc="darwin,windows,linux"
 deploy:
   provider: releases
   api_key:
-    secure: JZvXIB+YF/+Sh81rE6S2gO+s5oJMMnadCYbTuB34rTeh+7oQaodttaooHYSoFeUCy1Fe9S5VmQHdlcChD7AZ+BtXXHLBfZFWGO8U5DN3SrdiGJL4Xu+KaXYleYKzkbPSC3jQcffINGjKXmk7o7A0gusmU/a+iw7eQ8VQPlnsQ8k=
+    secure: cyh7XtakDj3xk6TQ92ZJXZQb0cG5Mle5+ynf7ULjCLBAjGgFaZzylXJVbaZ9AaVodC38uo5egjTfBd/4DOK6srL5manB++5e89qa9J3n/wSEZyiTPnB6ZOr4jonW5+0v2uSNBCRW2S01mAVLF9JSIChob6FgtPA7IjgP1B3edHM=
   file:
     - snapshot/pretty_windows_386.zip
     - snapshot/pretty_windows_amd64.zip
