@@ -11,16 +11,13 @@ deploy:
   api_key:
     secure: cyh7XtakDj3xk6TQ92ZJXZQb0cG5Mle5+ynf7ULjCLBAjGgFaZzylXJVbaZ9AaVodC38uo5egjTfBd/4DOK6srL5manB++5e89qa9J3n/wSEZyiTPnB6ZOr4jonW5+0v2uSNBCRW2S01mAVLF9JSIChob6FgtPA7IjgP1B3edHM=
   file:
-    - snapshot/pretty_windows_386.zip
-    - snapshot/pretty_windows_amd64.zip
-    - snapshot/pretty_darwin_386.zip
-    - snapshot/pretty_darwin_amd64.zip
-    - snapshot/pretty_linux_386.tar.gz
-    - snapshot/pretty_linux_amd64.tar.gz
-    - snapshot/pretty_linux_arm.tar.gz
-    - snapshot/pretty_snapshot_amd64.deb
-    - snapshot/pretty_snapshot_armhf.deb
-    - snapshot/pretty_snapshot_i386.deb
+    - snapshot/go-travis-release_windows_386.zip
+    - snapshot/go-travis-release_windows_amd64.zip
+    - snapshot/go-travis-release_darwin_386.zip
+    - snapshot/go-travis-release_darwin_amd64.zip
+    - snapshot/go-travis-release_linux_386.tar.gz
+    - snapshot/go-travis-release_linux_arm.tar.gz
+    - snapshot/go-travis-release_linux_amd64.tar.gz
   skip_cleanup: true
   on:
     tags: true
